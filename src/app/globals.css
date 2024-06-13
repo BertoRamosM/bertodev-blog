@@ -1,9 +1,11 @@
 :root {
-  --bg: #0f172a;
+  --bg: #020617;
   --text: white;
   --soft-bg: #475569;
   --accent-color: #3730a3;
 }
+
+
 
 * {
   padding: 0;
@@ -21,8 +23,10 @@ a {
   text-decoration: none;
 }
 
+
+
 .light {
-  --bg: #f8fafc;
+  --bg: #d4d4d8;
   --text: #1f2937;
   --soft-bg: #e2e8f0;
   --accent-color: #3b82f6;

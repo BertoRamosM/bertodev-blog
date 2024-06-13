@@ -1,33 +1,32 @@
 
 import React from "react";
 import style from "./navbar.module.css";
-import Image from "next/image";
 import Link from "next/link";
 import AuthLinks from "../authLink/AuthLinks";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import PortfolioIcon from "@/app/icons/PortfolioIcon";
 import LinkedinIcon from "@/app/icons/LinkedinIcon";
 import GithubIcon from "@/app/icons/GithubIcon";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
     <div className={style.container}>
       <div className={style.social}>
-        <Link href="https://portfolio.example.com" passHref>
-          
-            <PortfolioIcon strokeColor="var(--text)" width={24} height={24} />
-          
+        {/*  <Image src="/logo.webp" width={48} height={48} alt="user logo" class={style.avatar} /> */}
+        <Link href="https://albertoramos.dev/" passHref target="_blank">
+          <PortfolioIcon strokeColor="var(--text)" width={24} height={24} />
         </Link>
-        <Link href="https://linkedin.com/in/yourprofile" passHref>
-          
-            <LinkedinIcon strokeColor="var(--text)" width={24} height={24} />
-         
+        <Link
+          href="https://www.linkedin.com/in/alberto-ramos-munoz-372000105/"
+          passHref
+          target="_blank"
+        >
+          <LinkedinIcon strokeColor="var(--text)" width={24} height={24} />
         </Link>
-        
-        <Link href="https://github.com/yourprofile" passHref>
-        
-            <GithubIcon strokeColor="var(--text)" width={24} height={24} />
-        
+
+        <Link href="https://github.com/BertoRamosM" passHref target="_blank">
+          <GithubIcon strokeColor="var(--text)" width={24} height={24} />
         </Link>
       </div>
       <div className={style.logo}>
@@ -36,9 +35,15 @@ const Navbar = () => {
       <div className={style.links}>
         <ThemeToggle />
 
-        <Link href="/">Home</Link>
-        <Link href="/contact">Contact</Link>
-        <Link href="/about">About</Link>
+        <Link href="/" className={style.link}>
+          Home
+        </Link>
+        <Link href="/contact" className={style.link}>
+          Contact
+        </Link>
+        <Link href="/about" className={style.link}>
+          About
+        </Link>
 
         <AuthLinks />
       </div>

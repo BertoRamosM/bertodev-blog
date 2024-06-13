@@ -14,8 +14,8 @@ const ThemeToggle = () => {
       onClick={toggle}
       style={
         theme === "dark"
-          ? { background: "white" }
-          : { right: 1, background: "#0f172a" }
+          ? { backgroundColor: "white" }
+          : { right: 1, backgroundColor: "#0f172a" }
       }
     >
       <Image src="/moon.svg" alt="" width={14} height={14} />
@@ -23,8 +23,8 @@ const ThemeToggle = () => {
         className={style.ball}
         style={
           theme === "dark"
-            ? { left: 1, background: "#0f172a" }
-            : { right: 1, background: "white" }
+            ? { left: 1, backgroundColor: "#0f172a" }
+            : { right: 1, backgroundColor: "white" }
         }
       ></div>
       <Image src="/sun.svg" alt="" width={14} height={14} />
