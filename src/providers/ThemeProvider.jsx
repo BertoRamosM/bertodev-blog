@@ -2,11 +2,13 @@
 import { ThemeContext } from '@/app/context/ThemeContext';
 import React, { useContext } from 'react'
 
-const ThemeProvider = () => {
+const ThemeProvider = ({children}) => {
     const { theme } = useContext(ThemeContext);
 
   return (
-    <div className={theme}></div>
+    <div className={theme}>
+      {children}
+    </div>
   )
 }
 
