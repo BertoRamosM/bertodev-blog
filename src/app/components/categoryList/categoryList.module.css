@@ -19,10 +19,9 @@
   gap: 10px;
   text-transform: capitalize;
   width: max-content;
-  height: 80px;
+  height: 60px;
   justify-content: center;
   border-radius: 10px;
-  padding: 0px 10px;
 }
 
 .category.personal{
@@ -44,4 +43,30 @@
 
 .image{
   border-radius: 9999999px;
+}
+
+
+@media screen and (max-width: 1280px){
+  .category{
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .category{
+    width: 25%;
+  }
+}
+
+
+@media screen and (max-width: 768px){
+  .category{
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 640px){
+  .category{
+    width: 100%;
+  }
 }
