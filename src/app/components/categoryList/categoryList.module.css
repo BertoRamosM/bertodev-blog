@@ -1,3 +1,47 @@
 .container{
  
 }
+
+.title{
+  margin: 50px 0px;
+}
+
+.categories{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.category{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: capitalize;
+  width: max-content;
+  height: 80px;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 0px 10px;
+}
+
+.category.personal{
+  background-color: #57c4ff31;
+}
+
+.category.dev{
+  background-color: #da85c731;
+}
+
+.category.projects{
+  background-color: #7fb88133;
+}
+
+.category.hacks{
+  background-color: #ff795736;
+}
+
+
+.image{
+  border-radius: 9999999px;
+}

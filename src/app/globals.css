@@ -1,8 +1,19 @@
 :root {
   --bg: #020617;
-  --text: white;
+  --text: #e4e4e7;
   --soft-bg: #475569;
-  --accent-color: #3730a3;
+  --accent-color: #d4d4d8;
+  --strong-color: #4f46e5;
+  --button-text: white;
+}
+
+.light {
+  --bg: #d4d4d8;
+  --text: #1f2937;
+  --soft-bg: #e2e8f0;
+  --accent-color: #475569;
+  --strong-color: #4f46e5;
+  --button-text: white;
 }
 
 
@@ -25,12 +36,7 @@ a {
 
 
 
-.light {
-  --bg: #d4d4d8;
-  --text: #1f2937;
-  --soft-bg: #e2e8f0;
-  --accent-color: #3b82f6;
-}
+
 
 .container {
   min-height: 100vh;

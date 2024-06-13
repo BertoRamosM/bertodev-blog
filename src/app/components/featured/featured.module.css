@@ -5,6 +5,11 @@
 
 .title{
   font-size: 84px;
+  font-weight: 300;
+}
+
+.boldTitle{
+  font-weight: 600;
 }
 
 .image{
@@ -33,4 +38,54 @@
 
 .postTitle{
   font-size: 40px;
+}
+
+.postDesc{
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--accent-color);
+}
+
+.postButton{
+padding: 16px 20px;
+border: none;
+border-radius: 5px;
+width: max-content;
+background-color: var(--strong-color);
+color: var(--button-text);
+cursor: pointer;
+
+
+}
+
+.postButton:hover{
+  opacity: 80;
+}
+
+@media screen and (max-width: 1280px){
+  .title{
+    font-size: 72px;
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .title{
+    font-size: 64px;
+  }
+
+  .imgContainer{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 760px){
+  .title{
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 640px){
+  .title{
+    font-size: 36px;
+  }
 }
