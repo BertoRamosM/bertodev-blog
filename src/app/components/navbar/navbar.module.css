@@ -20,7 +20,7 @@ font-weight: bold;
 
 .logo2{
   font-weight: lighter;
-  border: 1px solid white;
+  border: 1px solid var(--text);
 }
 
 .links{

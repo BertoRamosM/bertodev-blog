@@ -23,6 +23,7 @@ const Navbar = () => {
             <LinkedinIcon strokeColor="var(--text)" width={24} height={24} />
          
         </Link>
+        
         <Link href="https://github.com/yourprofile" passHref>
         
             <GithubIcon strokeColor="var(--text)" width={24} height={24} />
@@ -30,7 +31,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className={style.logo}>
-        Berto|<span className={style.logo2}>Blog</span>
+        Berto<span className={style.logo2}>Blog</span>
       </div>
       <div className={style.links}>
         <ThemeToggle />
