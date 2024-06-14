@@ -1,15 +1,17 @@
-'use client'
-import React, { useState } from 'react'
-import style from './write.module.css'
-import Image from 'next/image';
-import PlusIcon from '../icons/PlusIcon';
-import ImageIcon from '../icons/ImageIcon';
-import VideoIcon from '../icons/VideoIcon';
-import ExternalIcon from '../icons/ExternalIcon';
+"use client";
+import React, { useState } from "react";
+import style from "./write.module.css";
+import PlusIcon from "../icons/PlusIcon";
+import ImageIcon from "../icons/ImageIcon";
+import VideoIcon from "../icons/VideoIcon";
+import ExternalIcon from "../icons/ExternalIcon";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.bubble.css";
 
 const WritePage = () => {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
 
-  const [open, setOpen] = useState(false)
   return (
     <div className={style.container}>
       <input type="text" placeholder="Title" />
@@ -30,9 +32,10 @@ const WritePage = () => {
             </button>
           </div>
         )}
+        <ReactQuill theme="bubble" value={value} onChange={setValue} placeholder="Tell your story..."/>
       </div>
     </div>
   );
-}
+};
 
 export default WritePage;
