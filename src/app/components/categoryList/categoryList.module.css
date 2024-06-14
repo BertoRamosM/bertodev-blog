@@ -21,6 +21,13 @@
   justify-content: center;
   border-radius: 10px;
   padding: 0px 10px;
+    transition: color 0.2s ease, transform 0.3s ease;
+
+}
+
+.category:hover{
+  color: var(--strong-color);
+  transform: scale(1.1);
 }
 
 .category.personal{

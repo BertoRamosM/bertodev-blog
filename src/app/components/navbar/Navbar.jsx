@@ -15,14 +15,21 @@ const Navbar = () => {
       <div className={style.social}>
         {/*  <Image src="/logo.webp" width={48} height={48} alt="user logo" class={style.avatar} /> */}
         <Link href="https://albertoramos.dev/" passHref target="_blank">
-          <PortfolioIcon strokeColor="var(--text)" width={24} height={24} />
+          <PortfolioIcon
+            strokeColor="var(--text)"
+            width={24}
+            height={24}
+            className="icon"
+          />
         </Link>
         <Link
           href="https://www.linkedin.com/in/alberto-ramos-munoz-372000105/"
           passHref
           target="_blank"
+          className="icon"
         >
-          <LinkedinIcon strokeColor="var(--text)" width={24} height={24} />
+          <LinkedinIcon strokeColor="var(--text)" width={24} height={24}
+          className="icon"/>
         </Link>
 
         <Link href="https://github.com/BertoRamosM" passHref target="_blank">

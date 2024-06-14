@@ -54,12 +54,12 @@ width: max-content;
 background-color: var(--strong-color);
 color: var(--button-text);
 cursor: pointer;
-
+  transition: scale 0.2s ease, transform 0.3s ease;
 
 }
 
 .postButton:hover{
-  opacity: 80;
+  transform: scale(1.1);
 }
 
 @media screen and (max-width: 1280px){

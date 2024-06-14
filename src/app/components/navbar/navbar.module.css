@@ -32,6 +32,15 @@ font-weight: bold;
   gap: 20px;
   flex: 1;
   font-size: 20px;
+      transition: color 0.2s ease, transform 0.3s ease;
+
+}
+
+
+
+.links > *:hover{
+  color: var(--strong-color);
+    transform: scale(1.1);
 
 }
 

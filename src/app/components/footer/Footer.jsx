@@ -51,17 +51,33 @@ const Footer = () => {
       <div className={style.links}>
         <div className={style.list}>
           <span className={style.listTitle}>Links</span>
-          <Link href="/">Home</Link>
-          <Link href="/">Blog</Link>
-          <Link href="/">About</Link>
-          <Link href="/">Contact</Link>
+          <Link href="/" className={style.linkItem}>
+            Home
+          </Link>
+          <Link href="/" className={style.linkItem}>
+            Blog
+          </Link>
+          <Link href="/" className={style.linkItem}>
+            About
+          </Link>
+          <Link href="/" className={style.linkItem}>
+            Contact
+          </Link>
         </div>
         <div className={style.list}>
           <span className={style.listTitle}>Tags</span>
-          <Link href="/">Personal</Link>
-          <Link href="/">Web Dev</Link>
-          <Link href="/">Projects</Link>
-          <Link href="/">Hacks</Link>
+          <Link href="/" className={style.linkItem}>
+            Personal
+          </Link>
+          <Link href="/" className={style.linkItem}>
+            Web Dev
+          </Link>
+          <Link href="/" className={style.linkItem}>
+            Projects
+          </Link>
+          <Link href="/" className={style.linkItem}>
+            Hacks
+          </Link>
         </div>
         <div className={style.list}>
           <span className={style.listTitle}>Social</span>
@@ -69,6 +85,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/alberto-ramos-munoz-372000105/"
             passHref
             target="_blank"
+            className={style.linkItem}
           >
             Portfolio
           </Link>
@@ -76,10 +93,16 @@ const Footer = () => {
             href="https://www.linkedin.com/in/alberto-ramos-munoz-372000105/"
             passHref
             target="_blank"
+            className={style.linkItem}
           >
             Linkedin
           </Link>
-          <Link href="https://github.com/BertoRamosM" passHref target="_blank">
+          <Link
+            href="https://github.com/BertoRamosM"
+            passHref
+            target="_blank"
+            className={style.linkItem}
+          >
             Github
           </Link>
         </div>
