@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.wrapper {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: 10px;
+  padding: 100px 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.socialButton {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 5;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 10px;
+  z-index: 99;
+  color: white;
+  gap: 20px;
+   transition: scale 0.2s ease, transform 0.3s ease;
+}
+
+
+.socialButton:hover{
+  transform: scale(1.1);
+}
+
+
+.socialButton:first-child {
+  background-color: rgba(255, 85, 85, 1);
+}
+.socialButton:nth-child(2) {
+  background-color: rgba(0, 0, 0, 1);
+
+}
+.socialButton:nth-child(3) {
+  background-color: rgba(8, 123, 234, 1)
+
+ 
+}
