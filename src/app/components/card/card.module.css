@@ -52,3 +52,8 @@
   color: var(--strong-color);
   transform: scale(1.1);
 }
+
+@media screen and (max-width: 1280px){
+.imageContainer{
+  display: none;}
+}

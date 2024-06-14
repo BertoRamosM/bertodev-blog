@@ -14,7 +14,15 @@
   border-radius: 10px;
   font-size: 14px;
   color: var(--text);
+    transition: color 0.2s ease, transform 0.3s ease;
+
 }
+
+.categoryItem:hover{
+  color: var(--strong-color);
+  transform: scale(1.1);
+}
+
 .categoryItem.personal {
   background-color: #57c4ff31;
 }
