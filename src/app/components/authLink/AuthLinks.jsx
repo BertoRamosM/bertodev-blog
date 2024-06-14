@@ -14,7 +14,7 @@ const AuthLinks = () => {
   return (
     <>
       {status === "no" ? (
-        <Link href="#" className={style.link}>
+        <Link href="/login" className={style.link}>
           Login
         </Link>
       ) : (

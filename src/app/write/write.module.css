@@ -2,11 +2,67 @@
 }
 
 .button {
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999999px;
+  border-radius: 50%;
   background-color: transparent;
-  border: 1px gray solid;
-  padding: 5px;
+  border: 1px var(--text) solid;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.editor{
+  display: flex;
+  gap: 20px;
+  height: 700px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.input{
+  padding: 50px;
+  font-size: 64px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.input::placeholder{
+  color: var(--accent-color);
+}
+.publishButton{
+padding: 16px 20px;
+border: none;
+border-radius: 5px;
+width: max-content;
+background-color: var(--strong-color);
+color: var(--button-text);
+cursor: pointer;
+transition: scale 0.2s ease, transform 0.3s ease;
+
+}
+
+.openButton{
+z-index: 9999999;
+top: 0;
+}
+
+.publishButton:hover{
+  transform: scale(1.1);
+}
+
+.add{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--bg);
+  position: absolute;
+  margin-right: 20px;
+}
+
+.textArea{
+  width: 100%;
 }
