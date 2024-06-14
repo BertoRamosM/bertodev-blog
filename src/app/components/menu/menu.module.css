@@ -11,6 +11,7 @@
 
 .title {
   font-size: 28px;
+ 
 }
 
 .items {
@@ -60,8 +61,17 @@
   color: gray;
 }
 
+.categoryList{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0px;
+  margin-bottom: 20px;
+}
+
 .category {
-  padding: 3px 8px;
+  padding: 14px 14px;
   border-radius: 10px;
   font-size: 12px;
   color: var(--text);
