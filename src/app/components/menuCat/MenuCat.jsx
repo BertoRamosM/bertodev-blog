@@ -7,22 +7,25 @@ const MenuCat = () => {
     <div className={style.categoryList}>
       <Link
         href="/blog?cat=personal"
-        className={`${style.category} ${style.personal}`}
+        className={`${style.categoryItem} ${style.personal}`}
       >
         Personal
       </Link>
-      <Link href="/blog?cat=dev" className={`${style.category} ${style.dev}`}>
+      <Link
+        href="/blog?cat=dev"
+        className={`${style.categoryItem} ${style.dev}`}
+      >
         Dev
       </Link>
       <Link
         href="/blog?cat=projects"
-        className={`${style.category} ${style.projects}`}
+        className={`${style.categoryItem} ${style.projects}`}
       >
         Projects
       </Link>
       <Link
         href="/blog?cat=hacks"
-        className={`${style.category} ${style.hacks}`}
+        className={`${style.categoryItem} ${style.hacks}`}
       >
         Hacks
       </Link>

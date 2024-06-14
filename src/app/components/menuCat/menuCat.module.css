@@ -1,32 +1,32 @@
 
 .categoryList{
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
-  padding: 20px 0px;
-  margin-bottom: 20px;
+  gap: 20px;
+  margin-bottom: 60px;
+  margin-top: 35px;
 }
 
-.category {
-  padding: 14px 14px;
+
+.categoryItem {
+  padding: 10px 25px;
   border-radius: 10px;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text);
-  width: max-content;
 }
-.category.personal {
+.categoryItem.personal {
   background-color: #57c4ff31;
 }
 
-.category.dev {
+.categoryItem.dev {
   background-color: #da85c731;
 }
 
-.category.projects {
+.categoryItem.projects {
   background-color: #7fb88133;
 }
 
-.category.hacks {
+.categoryItem.hacks {
   background-color: #ff795736;
 }
