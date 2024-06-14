@@ -10,7 +10,7 @@
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   border-radius: 10px;
-  padding: 100px 200px;
+  padding: 75px 200px;
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -48,6 +48,22 @@
 }
 .socialButton:nth-child(3) {
   background-color: rgba(8, 123, 234, 1)
+}
 
- 
+@media screen and(max-width: 768px){
+  .wrapper{
+    padding: 50px 100px;
+  }
+}
+
+
+@media screen and(max-width: 640px){
+  .wrapper{
+    padding: 30px;
+  }
+
+  .socialButton{
+    font-weight: 400;
+    font-size: 14px;
+  }
 }
