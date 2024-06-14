@@ -13,14 +13,37 @@ flex: 1;
 }
 
 .title{
-  font-size: 64px;
+  font-size: 58px;
   margin-bottom: 50px;
+}
+
+.user{
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .imageContainer{
 flex:1;
 height: 350px;
 position: relative;
+}
+
+.avatar{
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.userTextContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: var(--accent-color) ;
+}
+
+.username{
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .userImageContainer{
@@ -31,4 +54,25 @@ position: relative;
 
 .image{
   object-fit: cover;
+}
+
+.content{
+  display: flex;
+  gap: 50px;
+}
+
+.post{
+  flex: 5;
+  margin-top: 60px;
+
+}
+
+.desc p{
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.desc h5{
+  font-size: 24px;
 }

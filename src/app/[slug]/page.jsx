@@ -8,14 +8,16 @@ const SinglePage = () => {
     <div className={style.container}>
       <div className={style.infoContainer}>
         <div className={style.textContainer}>
-          <h1 className={style.title}>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h1>
+          <h1 className={style.title}>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          </h1>
           <div className={style.user}>
             <div className={style.userImageContainer}>
               <Image
                 src="/code.jpg"
                 alt="post image"
                 fill
-                className={style.image}
+                className={style.avatar}
               />
             </div>
             <div className={style.userTextContainer}>
@@ -34,7 +36,26 @@ const SinglePage = () => {
         </div>
       </div>
       <div className={style.content}>
-        <div className={style.post}></div>
+        <div className={style.post}>
+          <div className={style.desc}>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+              labore inventore aspernatur officiis fugiat libero quidem facilis
+              tenetur iusto est.
+            </p>
+            <h5>Lorem ipsum dolor sit.</h5>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+              labore inventore aspernatur officiis fugiat libero quidem facilis
+              tenetur iusto est.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+              labore inventore aspernatur officiis fugiat libero quidem facilis
+              tenetur iusto est.
+            </p>
+          </div>
+        </div>
         <Menu />
       </div>
     </div>
