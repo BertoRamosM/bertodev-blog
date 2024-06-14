@@ -1,3 +1,19 @@
 .container{
   
 }
+
+.logoImg{
+  border-radius: 9999999px;
+  }
+
+  .logo{
+flex: 1;
+text-align: center;
+font-weight: bold;
+
+}
+
+.logo2{
+  font-weight: lighter;
+  border: 1px solid var(--text);
+}
