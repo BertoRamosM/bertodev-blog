@@ -1,0 +1,32 @@
+
+.categoryList{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0px;
+  margin-bottom: 20px;
+}
+
+.category {
+  padding: 14px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--text);
+  width: max-content;
+}
+.category.personal {
+  background-color: #57c4ff31;
+}
+
+.category.dev {
+  background-color: #da85c731;
+}
+
+.category.projects {
+  background-color: #7fb88133;
+}
+
+.category.hacks {
+  background-color: #ff795736;
+}
