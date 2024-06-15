@@ -4,6 +4,8 @@ import Navbar from "./components/navbar/Navbar";
 import { ThemeContextProvider } from "./context/ThemeContext";
 import "./globals.css";
 import { Inter, Roboto } from "next/font/google";
+import AuthProvider from "@/providers/AuthProvider";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({
@@ -20,18 +22,25 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/logo.webp" />
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </Head>
       <body className={roboto.className}>
-        <ThemeContextProvider>
-          <ThemeProvider>
-            <div className="container">
-              <div className="wrapper">
-                <Navbar />
-                {children}
-                <Footer />
+        <AuthProvider>
+          <ThemeContextProvider>
+            <ThemeProvider>
+              <div className="container">
+                <div className="wrapper">
+                  <Navbar />
+                  {children}
+                  <Footer />
+                </div>
               </div>
-            </div>
-          </ThemeProvider>
-        </ThemeContextProvider>
+            </ThemeProvider>
+          </ThemeContextProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -1,19 +1,25 @@
+'use client'
 import React from 'react'
 import style from "./login.module.css"
 import GoogleIcon from '../icons/GoogleIcon';
 import GithubIcon from '../icons/GithubIcon';
 import FacebookIcon from '../icons/FacebookIcon';
+import { signIn, useSession } from 'next-auth/react';
 
-const page = () => {
+const LoginPage = () => {
+
+  const {data, status} = useSession()
+  console.log(data, status)
+
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
-        <div className={style.socialButton}>
+        <div className={style.socialButton} onClick={()=> signIn("google")}>
           <GoogleIcon />
           Sign in with Google
         </div>
         <div className={style.socialButton}>
-          <GithubIcon strokeColor='white'/>
+          <GithubIcon strokeColor='white' onClick={()=> signIn('github')} />
           Sign in with Github
         </div>
         <div className={style.socialButton}>
@@ -25,4 +31,4 @@ const page = () => {
   );
 }
 
-export default page
+export default LoginPage;
