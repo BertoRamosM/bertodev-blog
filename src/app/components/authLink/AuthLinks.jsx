@@ -21,9 +21,11 @@ const AuthLinks = () => {
   return (
     <div>
       {status === "unauthenticated" ? (
-        <Link href="/login" className={style.link}>
-          Login
-        </Link>
+        <div className={style.inLinks}>
+          <Link href="/login" className={style.link}>
+            Login
+          </Link>
+        </div>
       ) : (
         <div className={style.inLinks}>
           <Link href="/write" className={style.link}>
