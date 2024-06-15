@@ -33,7 +33,7 @@
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.links > *:hover {
+.links > a:hover {
   color: var(--strong-color);
   transform: scale(1.05);
 }

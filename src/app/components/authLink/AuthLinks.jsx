@@ -35,15 +35,26 @@ const AuthLinks = () => {
 
       {open && (
         <div className={style.responsiveMenu}>
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/" onClick={handleResponsive}>
+            Home
+          </Link>
+          <Link href="/about" onClick={handleResponsive}>
+            About
+          </Link>
+          <Link href="/contact" onClick={handleResponsive}>
+            Contact
+          </Link>
           {status === "no" ? (
-            <Link href="#">Login</Link>
+            <Link href="/login" onClick={handleResponsive}>
+              Login
+            </Link>
           ) : (
             <>
-              (<Link href="#">Write</Link>)
-              <span className={style.link}>Logout</span>
+              (
+              <Link href="/write" onClick={handleResponsive}>
+                Write
+              </Link>
+              )<span className={style.link}>Logout</span>
             </>
           )}
         </div>
