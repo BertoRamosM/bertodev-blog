@@ -1,6 +1,13 @@
 .link {
   cursor: pointer;
+  
 }
+
+.link:hover {
+  color: var(--strong-color);
+  transform: scale(1.05);
+}
+
 
 .burger {
   width: 20px;
@@ -12,6 +19,10 @@
    transition: color 0.3s ease, transform 0.3s ease;
 }
 
+.inLinks{
+  display: flex;
+  gap: 20px;
+}
 
 .line {
   width: 100%;
@@ -20,7 +31,7 @@
 }
 .burger:hover > * {
   background-color: var(--strong-color);
-  transform: scale(1.10);
+  transform: scale(1.05);
 }
 
 .responsiveMenu{
@@ -52,10 +63,11 @@
   }
 
   .link{
-    display: block;
+    display: flex;
   }
 
   .inLinks{
     display: none;
+    
   }
 }
