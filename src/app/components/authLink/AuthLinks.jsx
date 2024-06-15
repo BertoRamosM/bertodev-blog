@@ -2,25 +2,31 @@
 import Link from "next/link";
 import style from "./authLinks.module.css";
 import { useState } from "react";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const AuthLinks = () => {
   const [open, setOpen] = useState(false);
-  const status = "yes"; // Example status value, should be dynamic in a real application
+
+  const { data, status } = useSession();
+  console.log(status)
 
   const handleResponsive = () => {
     setOpen((prev) => !prev);
   };
 
+  if(status === "loading") {
+    return <div className={style.loading}>Loading...</div>
+  }
+
   return (
     <>
-      {status === "no" ? (
+      {status === "unauthenticated" ? (
         <Link href="/login" className={style.link}>
           Login
         </Link>
       ) : (
         <>
-          <Link href="#" className={style.link}>
+          <Link href="/write" className={style.link}>
             Write
           </Link>
           <span className={style.link} onClick={signOut}>
@@ -50,7 +56,7 @@ const AuthLinks = () => {
           >
             Contact
           </Link>
-          {status === "no" ? (
+          {status === "unauthenticated" ? (
             <Link
               href="/login"
               className={style.link}
