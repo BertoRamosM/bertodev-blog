@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from "./login.module.css"
 import GoogleIcon from '../icons/GoogleIcon';
 import GithubIcon from '../icons/GithubIcon';
@@ -12,17 +12,17 @@ const LoginPage = () => {
   const router = useRouter()
 
   const { data, status } = useSession()
+
+    useEffect(() => {
+      if (status === "authenticated") {
+        router.push("/");
+      }
+    }, [status, router]);
   
   if (status === "loading") {
   return <div className={style.loading}>Loading...</div>
   }
-  
 
-  useEffect(() => {
-    if (status === "authenticated") {
-      router.push("/");
-    }
-  }, [status, router]);
   
 
   return (
