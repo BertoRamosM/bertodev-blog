@@ -17,12 +17,12 @@ const getData = async (page) => {
 };
 
 const CardList = async ({ page }) => {
-  const data = await getData(page);
-  const { posts, lastPage } = data;
+  const { posts, lastPage } = await getData(page);
 
   return (
     <div className={style.container}>
       <h1 className={style.title}>Recent Posts</h1>
+      
 
       {posts?.map((item) => (
         <Card key={item._id} item={item} />

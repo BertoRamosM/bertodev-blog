@@ -4,32 +4,35 @@ import style from "./pagination.module.css";
 import { useRouter } from 'next/navigation';
 
 const Pagination = ({page, lastPage}) => {
-console.log(lastPage)
   const router = useRouter()
+
+  const first = page !== 1; 
+  const last = page < lastPage;
   return (
     <>
       <div className={style.container}>
-        {page !== 1 && (
+        
           <button
-            disabled={page === 1}
+            disabled={!first}
             className={style.button}
             onClick={() => router.push(`?page=${page - 1}`)}
           >
             Previous
           </button>
-        )}
+        
 
-        {page < lastPage && (
+        
           <button
             className={`${style.button} ${style.next}`}
+            disabled={!last}
             onClick={() => router.push(`?page=${page + 1}`)}
           >
             Next
           </button>
-        )}
+        
       </div>
       <p className={style.pageCount}>
-        {page}/{lastPage}
+        {page} / {lastPage}
       </p>
     </>
   );
