@@ -13,7 +13,8 @@ const getData = async (page) => {
     throw new Error("Failed to fetch data");
   }
   const data = await res.json();
-  return data.posts;
+  console.log(data)
+  return data.posts; 
 };
 
 const CardList = async ({page}) => {
@@ -27,7 +28,7 @@ const CardList = async ({page}) => {
       {data?.map((item) => (
         <Card key={item._id} item={item} />
       ))}
-      <Pagination />
+      <Pagination page={page} />
     </div>
   );
 };

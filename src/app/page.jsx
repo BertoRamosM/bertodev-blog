@@ -7,7 +7,7 @@ import style from "./homepage.module.css";
 
 export default function Home({searchParams}) {
 
-  const page = parseInt(searchParams) || 1;
+  const page = parseInt(searchParams.page) || 1;
   console.log(page)
 
   return (
