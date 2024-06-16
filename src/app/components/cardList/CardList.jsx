@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
 import style from "./cardList.module.css";
-import Pagination from '../pagination/Pagination';
-import Image from 'next/image';
-import Card from '../card/Card';
-
+import Pagination from "../pagination/Pagination";
+import Image from "next/image";
+import Card from "../card/Card";
 
 const getData = async (page) => {
   const res = await fetch(`http://localhost:3000/api/posts?page=${page}`, {
@@ -13,22 +12,22 @@ const getData = async (page) => {
     throw new Error("Failed to fetch data");
   }
   const data = await res.json();
-  console.log(data)
-  return data.posts; 
+  console.log(data);
+  return data;
 };
 
-const CardList = async ({page}) => {
-
-  const data = await getData(page)
+const CardList = async ({ page }) => {
+  const data = await getData(page);
+  const { posts, lastPage } = data;
 
   return (
     <div className={style.container}>
       <h1 className={style.title}>Recent Posts</h1>
 
-      {data?.map((item) => (
+      {posts?.map((item) => (
         <Card key={item._id} item={item} />
       ))}
-      <Pagination page={page} />
+      <Pagination page={page} lastPage={lastPage} />
     </div>
   );
 };
