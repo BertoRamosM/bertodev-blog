@@ -4,8 +4,8 @@ import Pagination from "../pagination/Pagination";
 import Image from "next/image";
 import Card from "../card/Card";
 
-const getData = async (page) => {
-  const res = await fetch(`http://localhost:3000/api/posts?page=${page}`, {
+const getData = async (page, cat) => {
+  const res = await fetch(`http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -16,8 +16,8 @@ const getData = async (page) => {
   return data;
 };
 
-const CardList = async ({ page }) => {
-  const { posts, lastPage } = await getData(page);
+const CardList = async ({ page, cat }) => {
+  const { posts, lastPage } = await getData(page, cat);
 
   return (
     <div className={style.container}>
