@@ -3,63 +3,45 @@ import style from "./categoryList.module.css";
 import Link from 'next/link';
 import Image from 'next/image';
 
-const CategoryList = () => {
+
+
+const getData = async () => {
+  const res = await fetch("http://localhost:3000/api/categories", {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const data = await res.json();
+  return data.categories;
+};
+
+const CategoryList = async () => {
+
+  const data = await getData()
+  console.log(data)
+
+
   return (
     <div className={style.container}>
       <h1 className={style.title}>Categories</h1>
       <div className={style.categories}>
-        <Link
-          href="/blog?cat=personal"
-          className={`${style.category} ${style.personal}`}
-        >
-          <Image
-            src="/logo.webp"
-            alt="personal"
-            width={32}
-            height={32}
-            className={style.image}
-          />
-          Personal
-        </Link>
-
-        <Link href="/blog?cat=dev" className={`${style.category} ${style.dev}`}>
-          <Image
-            src="/webdev.jpg"
-            alt="dev"
-            width={32}
-            height={32}
-            className={style.image}
-          />
-          Web dev
-        </Link>
-
-        <Link
-          href="/blog?cat=projects"
-          className={`${style.category} ${style.projects}`}
-        >
-          <Image
-            src="/projects.jpg"
-            alt="projects"
-            width={32}
-            height={32}
-            className={style.image}
-          />
-          Projects
-        </Link>
-
-        <Link
-          href="/blog?cat=hacks"
-          className={`${style.category} ${style.hacks}`}
-        >
-          <Image
-            src="/hacks.jpg"
-            alt="hacks"
-            width={32}
-            height={32}
-            className={style.image}
-          />
-          Hacks
-        </Link>
+       {data?.map((item) => (
+          <Link
+            href="/blog?cat=personal"
+            className={`${style.category} ${`style.category.${item.title}`}`}
+            key={item._id}
+          >
+            <Image
+              src={item.img}
+              alt="personal"
+              width={32}
+              height={32}
+              className={style.image}
+            />
+            {item.title}
+          </Link>
+        ))}
       </div>
     </div>
   );
