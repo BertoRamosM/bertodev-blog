@@ -13,20 +13,20 @@ const getData = async (page) => {
     throw new Error("Failed to fetch data");
   }
   const data = await res.json();
-  return data.categories;
+  return data.posts;
 };
 
 const CardList = async ({page}) => {
 
-  const data = await getData({page})
+  const data = await getData(page)
 
   return (
     <div className={style.container}>
       <h1 className={style.title}>Recent Posts</h1>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+
+      {data?.map((item) => (
+        <Card key={item._id} item={item} />
+      ))}
       <Pagination />
     </div>
   );

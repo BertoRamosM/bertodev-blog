@@ -7,7 +7,8 @@ import style from "./homepage.module.css";
 
 export default function Home({searchParams}) {
 
-  const page = parent(searchParams.page) || 1;
+  const page = parseInt(searchParams) || 1;
+  console.log(page)
 
   return (
   <div className={style.container}>

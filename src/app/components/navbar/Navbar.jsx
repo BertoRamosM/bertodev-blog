@@ -36,9 +36,9 @@ const Navbar = () => {
           <GithubIcon strokeColor="var(--text)" width={24} height={24} />
         </Link>
       </div>
-      <div className={style.logo}>
+      <Link className={style.logo} href={'/'}>
         Berto<span className={style.logo2}>Blog</span>
-      </div>
+      </Link>
       <div className={style.links}>
         <ThemeToggle />
 
