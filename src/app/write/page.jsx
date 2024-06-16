@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./write.module.css";
 import PlusIcon from "../icons/PlusIcon";
 import ImageIcon from "../icons/ImageIcon";
@@ -8,10 +8,27 @@ import ExternalIcon from "../icons/ExternalIcon";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
 import MinusIcon from "../icons/MinusIcon";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const WritePage = () => {
+
+  const router = useRouter();
+
+  const {  status } = useSession();
+
+ 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
+   useEffect(() => {
+     if (status === "authenticated") {
+       router.push("/");
+     }
+   }, [status, router]);
+
+   if (status === "loading") {
+     return <div className={style.loading}>Loading...</div>;
+   }
 
   return (
     <div className={style.container}>
