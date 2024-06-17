@@ -10,42 +10,109 @@ import "react-quill/dist/quill.bubble.css";
 import MinusIcon from "../icons/MinusIcon";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { app } from "@/utils/firebase";
+import Image from "next/image";
+
+const storage = getStorage(app);
 
 const WritePage = () => {
-
   const router = useRouter();
 
   const { status } = useSession();
 
- 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
 
-  const [file, setFile] = useState(null)
-    const [title, setTitle] = useState();
+  const [file, setFile] = useState(null);
+  const [media, setMedia] = useState("");
+  const [title, setTitle] = useState("");
 
+  useEffect(() => {
+    const upload = () => {
+      const name = new Date().getTime() + file.name;
+      const storageRef = ref(storage, name);
 
-   useEffect(() => {
-     if (status === "unauthenticated") {
-       router.push("/");
-     }
-   }, [status, router]);
+      const uploadTask = uploadBytesResumable(storageRef, file);
 
-   if (status === "loading") {
-     return <div className={style.loading}>Loading...</div>;
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+          }
+        },
+        (error) => {},
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setMedia(downloadURL);
+          });
+        }
+      );
+    };
+
+    file && upload();
+  }, [file]);
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/");
+    }
+  }, [status, router]);
+
+  if (status === "loading") {
+    return <div className={style.loading}>Loading...</div>;
   }
-  
+
+  const slugify = (str) =>
+    str
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/[\s_-]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+
+  const handleSubmit = async () => {
+    const res = await fetch("/api/posts", {
+      method: "POST",
+      body: JSON.stringify({
+        title,
+        desc: value,
+        img: media,
+        slug: slugify(title),
+        catSlug: "personal", //if not selected, choose the general category
+      }),
+    });
+  };
 
   return (
     <div className={style.container}>
-      <input type="text" placeholder="Title" className={style.input} />
+      <input
+        type="text"
+        placeholder="Title"
+        className={style.input}
+        onChange={(e) => setTitle(e.target.value)}
+      />
       <div className={style.editor}>
         <button
           className={`${style.button} ${style.openButton}`}
           onClick={() => setOpen(!open)}
         >
           {open ? (
-            <MinusIcon className={style.icon} strokecolor="var(--text)" />
+            <MinusIcon className={style.icon} strokeColor="var(--text)" />
           ) : (
             <PlusIcon className={style.icon} strokeColor="var(--text)" />
           )}
@@ -60,7 +127,7 @@ const WritePage = () => {
             />
 
             <button className={style.button} onClick={() => setOpen(!open)}>
-              <MinusIcon className={style.icon} strokecolor="var(--text)" />
+              <MinusIcon className={style.icon} strokeColor="var(--text)" />
             </button>
 
             <button className={style.button}>
@@ -86,7 +153,14 @@ const WritePage = () => {
           placeholder="Tell your story..."
         />
       </div>
-      <button className={style.publishButton}>Publish</button>
+      {media && (
+        <div className={style.imagePreview}>
+          <Image src={media} alt="Uploaded media" className={style.uploadedImg} fill/>
+        </div>
+      )}
+      <button className={style.publishButton} onClick={handleSubmit}>
+        Publish
+      </button>
     </div>
   );
 };
