@@ -45,8 +45,6 @@ export const POST = async (req) => {
       { status: 401 }
     );
   }
-  const { searchParams } = new URL(req.url);
-  const postSlug = searchParams.get("postSlug");
 
   try {
     const body = await req.json()

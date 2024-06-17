@@ -15,13 +15,13 @@ const WritePage = () => {
 
   const router = useRouter();
 
-  const {  status } = useSession();
+  const { status } = useSession();
 
  
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
    useEffect(() => {
-     if (status === "authenticated") {
+     if (status === "unauthenticated") {
        router.push("/");
      }
    }, [status, router]);
@@ -60,6 +60,7 @@ const WritePage = () => {
             </button>
           </div>
         )}
+
         <ReactQuill
           className={style.textArea}
           theme="bubble"
