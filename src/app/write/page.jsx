@@ -20,6 +20,11 @@ const WritePage = () => {
  
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
+
+  const [file, setFile] = useState(null)
+    const [title, setTitle] = useState();
+
+
    useEffect(() => {
      if (status === "unauthenticated") {
        router.push("/");
@@ -28,7 +33,8 @@ const WritePage = () => {
 
    if (status === "loading") {
      return <div className={style.loading}>Loading...</div>;
-   }
+  }
+  
 
   return (
     <div className={style.container}>
@@ -46,12 +52,23 @@ const WritePage = () => {
         </button>
         {open && (
           <div className={style.add}>
+            <input
+              type="file"
+              id="image"
+              onChange={(e) => setFile(e.target.files[0])}
+              style={{ display: "none" }}
+            />
+
             <button className={style.button} onClick={() => setOpen(!open)}>
               <MinusIcon className={style.icon} strokecolor="var(--text)" />
             </button>
+
             <button className={style.button}>
-              <ImageIcon className={style.icon} strokeColor="var(--text)" />
+              <label htmlFor="image">
+                <ImageIcon className={style.icon} strokeColor="var(--text)" />
+              </label>
             </button>
+
             <button className={style.button}>
               <ExternalIcon className={style.icon} strokeColor="var(--text)" />
             </button>
