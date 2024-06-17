@@ -20,7 +20,7 @@ import {
 import { app } from "@/utils/firebase";
 import Image from "next/image";
 import Loader from "../components/loader/Loader";
-import SmallLoader from "../components/loader/SmallLoader";
+import SmallLoader from "../components/smallLoader/SmallLoader";
 import DOMPurify from "dompurify";
 
 const WritePage = () => {

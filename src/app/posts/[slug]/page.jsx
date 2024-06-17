@@ -1,12 +1,12 @@
-import React from 'react'
-import style from './singlePage.module.css'
-import Image from 'next/image';
-import Menu from '../../components/menu/Menu';
-import Comments from '../../components/comments/Comments';
-import SmallLoader from '../../components/loader/SmallLoader'
+import React from "react";
+import style from "./singlePage.module.css";
+import Image from "next/image";
+import Menu from "../../components/menu/Menu";
+import Comments from "../../components/comments/Comments";
+import SmallLoader from "../../components/smallLoader/SmallLoader";
 
 const getData = async (slug) => {
-    const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
+  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -16,12 +16,10 @@ const getData = async (slug) => {
   return data;
 };
 
+const SinglePage = async ({ params }) => {
+  const { slug } = params;
 
-const SinglePage = async ({params}) => {
-  
-  const {slug} = params
-
-  const data = await getData(slug)
+  const data = await getData(slug);
 
   return (
     <div className={style.container}>
@@ -73,6 +71,6 @@ const SinglePage = async ({params}) => {
       </div>
     </div>
   );
-}
+};
 
 export default SinglePage;

@@ -10,7 +10,7 @@ export const GET = async (req) => {
 
   const cat = searchParams.get('cat')
   
-  const POST_PER_PAGE = 2;
+  const POST_PER_PAGE = 4;
 
   const query = {
     take: POST_PER_PAGE,
@@ -43,7 +43,6 @@ export const GET = async (req) => {
 //create post
 export const POST = async (req) => {
   const session = await getAuthSession()
-  console.log(session)
 
   if (!session) {
     return new NextResponse(

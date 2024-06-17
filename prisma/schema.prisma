@@ -77,7 +77,8 @@ model Post {
   cat       Category  @relation(fields: [catSlug], references: [slug])
   userEmail String
   user      User      @relation(fields: [userEmail], references: [email])
-  comments  Comment[]
+  comments  Comment[],
+  isFeatured Boolean?
 }
 
 model Comment {

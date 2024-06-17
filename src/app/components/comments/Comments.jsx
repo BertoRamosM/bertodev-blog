@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
-import Loader from "../loader/SmallLoader";
+import Loader from "../smallLoader/SmallLoader";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -25,21 +25,21 @@ const Comments = ({ postSlug }) => {
     fetcher
   );
 
-  const [desc, setDesc] = useState("")
+  const [desc, setDesc] = useState("");
 
-  const handleSubmit = async() => {
-    await fetch('/api/comments', {
-      method: 'POST',
+  const handleSubmit = async () => {
+    await fetch("/api/comments", {
+      method: "POST",
       body: JSON.stringify({
-        desc, postSlug
-      })
-    })
-    mutate()
-  }
-
+        desc,
+        postSlug,
+      }),
+    });
+    mutate();
+  };
 
   if (error) return <div>Failed to load comments</div>;
-  if (!data) return <Loader />
+  if (!data) return <Loader />;
 
   return (
     <div className={style.container}>
@@ -49,10 +49,11 @@ const Comments = ({ postSlug }) => {
           <textarea
             placeholder="Write a comment..."
             className={style.input}
-            onChange={e=>setDesc(e.target.value)}
+            onChange={(e) => setDesc(e.target.value)}
           ></textarea>
-          <button className={style.button}
-          onClick={handleSubmit}>Send</button>
+          <button className={style.button} onClick={handleSubmit}>
+            Send
+          </button>
         </div>
       ) : (
         <Link href="/login">Login to write a comment</Link>

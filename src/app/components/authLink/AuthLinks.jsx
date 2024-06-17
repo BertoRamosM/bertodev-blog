@@ -3,7 +3,7 @@ import Link from "next/link";
 import style from "./authLinks.module.css";
 import { useState } from "react";
 import { signOut, useSession } from "next-auth/react";
-import SmallLoader from "../../components/loader/smallLoader"
+import SmallLoader from "../smallLoader/SmallLoader";
 
 const AuthLinks = () => {
   const [open, setOpen] = useState(false);
@@ -14,8 +14,8 @@ const AuthLinks = () => {
     setOpen((prev) => !prev);
   };
 
-  if(status === "loading") {
-    return <SmallLoader />
+  if (status === "loading") {
+    return <SmallLoader />;
   }
 
   return (
