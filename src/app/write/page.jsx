@@ -19,9 +19,8 @@ import {
 import { app } from "@/utils/firebase";
 import Image from "next/image";
 import Loader from "../components/loader/Loader";
-import SmallLoader from "../components/loader/SmallLoader"
+import SmallLoader from "../components/loader/SmallLoader";
 
-const storage = getStorage(app);
 
 const WritePage = () => {
   const router = useRouter();
@@ -34,10 +33,13 @@ const WritePage = () => {
   const [file, setFile] = useState(null);
   const [media, setMedia] = useState("");
   const [title, setTitle] = useState("");
+  const [catSlug, setCatSlug] = useState("");
 
   const [uploadProgress, setUploadProgress] = useState(0);
 
   useEffect(() => {
+        const storage = getStorage(app);
+
     const upload = () => {
       const name = new Date().getTime() + file.name;
       const storageRef = ref(storage, name);
@@ -80,7 +82,7 @@ const WritePage = () => {
   }, [status, router]);
 
   if (status === "loading") {
-    return <Loader />
+    return <Loader />;
   }
 
   const slugify = (str) =>
@@ -99,10 +101,14 @@ const WritePage = () => {
         desc: value,
         img: media,
         slug: slugify(title),
-        catSlug: "personal", //if not selected, choose the general category
+        catSlug: catSlug || "personal", //if not selected, choose the general category
       }),
     });
-  };
+
+    if (res.status === 200) {
+      const data = await res.json();
+      router.push(`/posts/${data.slug}`);
+    }  };
 
   return (
     <div className={style.container}>
@@ -112,6 +118,15 @@ const WritePage = () => {
         className={style.input}
         onChange={(e) => setTitle(e.target.value)}
       />
+      <select
+        className={style.select}
+        onChange={(e) => setCatSlug(e.target.value)}
+      >
+        <option value="personal">personal</option>
+        <option value="projects">projects</option>
+        <option value="webdev">webdev</option>
+        <option value="hacks">hacks</option>
+      </select>
       <div className={style.editor}>
         <input
           type="file"

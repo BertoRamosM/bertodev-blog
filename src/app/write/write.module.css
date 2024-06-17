@@ -84,3 +84,14 @@ width: 100px;
 .imagePreview{
  object-fit: cover;
 }
+
+.select{
+    margin-bottom: 50px;
+  padding: 10px 20px;
+ 
+  width: max-content;
+   background-color: var(--text);
+  color: var(--bg);
+  text-transform: capitalize;
+  border-radius: 5px;
+}
