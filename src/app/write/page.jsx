@@ -19,6 +19,7 @@ import {
 import { app } from "@/utils/firebase";
 import Image from "next/image";
 import Loader from "../components/loader/Loader";
+import SmallLoader from "../components/loader/SmallLoader"
 
 const storage = getStorage(app);
 
@@ -79,7 +80,7 @@ const WritePage = () => {
   }, [status, router]);
 
   if (status === "loading") {
-    return <div className={style.loading}>Loading...</div>;
+    return <Loader />
   }
 
   const slugify = (str) =>
@@ -124,21 +125,15 @@ const WritePage = () => {
           </label>
         </button>
 
-        <Loader />
-
-        {uploadProgress > 0 && uploadProgress < 100 && (
-          <div className={style.loader}>
-            Uploading {uploadProgress.toFixed(0)}%
-          </div>
-        )}
+        {uploadProgress > 0 && uploadProgress < 100 && <SmallLoader />}
         {media && uploadProgress === 100 && (
           <div className={style.imagePreview}>
             <Image
               src={media}
               alt="Uploaded media"
               className={style.uploadedImg}
-              height={200}
-              width={200}
+              height={100}
+              width={100}
             />
           </div>
         )}

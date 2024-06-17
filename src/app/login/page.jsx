@@ -6,6 +6,7 @@ import GithubIcon from '../icons/GithubIcon';
 import FacebookIcon from '../icons/FacebookIcon';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Loader from '../components/loader/Loader';
 
 const LoginPage = () => {
 
@@ -20,7 +21,7 @@ const LoginPage = () => {
     }, [status, router]);
   
   if (status === "loading") {
-  return <div className={style.loading}>Loading...</div>
+  return <Loader />
   }
 
   
@@ -29,7 +30,7 @@ const LoginPage = () => {
     <div className={style.container}>
       <div className={style.wrapper}>
         {status === "loading" ? (
-          <div className={style.loading}>Loading...</div>
+          <Loader />
         ) : (
           <>
             <div

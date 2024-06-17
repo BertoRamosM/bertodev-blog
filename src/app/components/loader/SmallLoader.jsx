@@ -3,7 +3,7 @@ import style from "./loader.module.css";
 
 const Loader = () => {
   return (
-    <div className={style.loaderContainer}>
+   
       <div className={style.ldsroller}>
         <div></div>
         <div></div>
@@ -14,7 +14,7 @@ const Loader = () => {
         <div></div>
         <div></div>
       </div>
-    </div>
+  
   );
 };
 
