@@ -20,5 +20,5 @@ export const authOptions = {
 };
 
 export const getAuthSession = () => {
-  getServerSession(authOptions)
+  return getServerSession(authOptions)
 }

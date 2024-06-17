@@ -8,7 +8,6 @@ const AuthLinks = () => {
   const [open, setOpen] = useState(false);
 
   const { data, status } = useSession();
-  console.log(status)
 
   const handleResponsive = () => {
     setOpen((prev) => !prev);
