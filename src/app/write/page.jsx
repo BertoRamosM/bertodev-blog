@@ -5,7 +5,6 @@ import PlusIcon from "../icons/PlusIcon";
 import ImageIcon from "../icons/ImageIcon";
 import VideoIcon from "../icons/VideoIcon";
 import ExternalIcon from "../icons/ExternalIcon";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
 import MinusIcon from "../icons/MinusIcon";
@@ -26,6 +25,8 @@ import DOMPurify from "dompurify";
 const WritePage = () => {
   const router = useRouter();
   const { status } = useSession();
+
+  const ReactQuill = dynamic(()=> import ('react-quill'), {ssr: false})
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");

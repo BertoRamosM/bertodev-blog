@@ -1,7 +1,7 @@
 import React from "react";
-import style from "./loader.module.css";
+import style from "./smallLoader.module.css";
 
-const Loader = () => {
+const SmallLoader = () => {
   return (
    
       <div className={style.ldsroller}>
@@ -18,4 +18,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default SmallLoader;
