@@ -1,9 +1,16 @@
-import React from 'react'
-import style from "./card.module.css"
-import Image from 'next/image';
-import Link from 'next/link';
+import React from "react";
+import style from "./card.module.css";
+import Image from "next/image";
+import Link from "next/link";
+import createDOMPurify from "dompurify";
+import { JSDOM } from "jsdom";
 
-const Card = ({key, item}) => {
+const window = new JSDOM("").window;
+const DOMPurify = createDOMPurify(window);
+
+const Card = ({ key, item }) => {
+  const sanitizedDesc = DOMPurify.sanitize(item.desc);
+
   return (
     <div className={style.container} key={key}>
       {item.img && (
@@ -21,13 +28,16 @@ const Card = ({key, item}) => {
         <Link href={`/posts/${item.slug}`}>
           <h1>{item.title}</h1>
         </Link>
-        <p className={style.desc}>{item.desc.substring(0, 60)}</p>
+        <div
+          className={style.desc}
+          dangerouslySetInnerHTML={{ __html: sanitizedDesc.substring(0, 60) }}
+        />
         <Link href={`/posts/${item.slug}`} className={style.link}>
           Read More
         </Link>
       </div>
     </div>
   );
-}
+};
 
-export default Card
+export default Card;

@@ -6,6 +6,7 @@ import ImageIcon from "../icons/ImageIcon";
 import VideoIcon from "../icons/VideoIcon";
 import ExternalIcon from "../icons/ExternalIcon";
 import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
 import MinusIcon from "../icons/MinusIcon";
 import { useRouter } from "next/navigation";
@@ -20,11 +21,10 @@ import { app } from "@/utils/firebase";
 import Image from "next/image";
 import Loader from "../components/loader/Loader";
 import SmallLoader from "../components/loader/SmallLoader";
-
+import DOMPurify from "dompurify";
 
 const WritePage = () => {
   const router = useRouter();
-
   const { status } = useSession();
 
   const [open, setOpen] = useState(false);
@@ -38,7 +38,7 @@ const WritePage = () => {
   const [uploadProgress, setUploadProgress] = useState(0);
 
   useEffect(() => {
-        const storage = getStorage(app);
+    const storage = getStorage(app);
 
     const upload = () => {
       const name = new Date().getTime() + file.name;
@@ -52,7 +52,7 @@ const WritePage = () => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           setUploadProgress(progress);
-          console.log("Upload is " + progress + "% done");
+
           switch (snapshot.state) {
             case "paused":
               console.log("Upload is paused");
@@ -108,7 +108,8 @@ const WritePage = () => {
     if (res.status === 200) {
       const data = await res.json();
       router.push(`/posts/${data.slug}`);
-    }  };
+    }
+  };
 
   return (
     <div className={style.container}>
@@ -152,49 +153,12 @@ const WritePage = () => {
             />
           </div>
         )}
-        {/*  <button
-          className={`${style.button} ${style.openButton}`}
-          onClick={() => setOpen(!open)}
-        >
-          {open ? (
-            <MinusIcon className={style.icon} strokeColor="var(--text)" />
-          ) : (
-            <PlusIcon className={style.icon} strokeColor="var(--text)" />
-          )}
-        </button> */}
-        {/*  {open && (
-          <div className={style.add}>
-            <input
-              type="file"
-              id="image"
-              onChange={(e) => setFile(e.target.files[0])}
-              style={{ display: "none" }}
-            />
 
-            <button className={style.button} onClick={() => setOpen(!open)}>
-              <MinusIcon className={style.icon} strokeColor="var(--text)" />
-            </button>
-
-            <button className={style.button}>
-              <label htmlFor="image">
-                <ImageIcon className={style.icon} strokeColor="var(--text)" />
-              </label>
-            </button>
-
-            <button className={style.button}>
-              <ExternalIcon className={style.icon} strokeColor="var(--text)" />
-            </button>
-            <button className={style.button}>
-              <VideoIcon className={style.icon} strokeColor="var(--text)" />
-            </button>
-          </div>
-        )}
- */}
         <ReactQuill
           className={style.textArea}
           theme="bubble"
           value={value}
-          onChange={setValue}
+          onChange={(html) => setValue(DOMPurify.sanitize(html))}
           placeholder="Tell your story..."
         />
       </div>
@@ -202,6 +166,11 @@ const WritePage = () => {
       <button className={style.publishButton} onClick={handleSubmit}>
         Publish
       </button>
+
+      <div className={style.preview}>
+        <h2>Preview:</h2>
+        <div dangerouslySetInnerHTML={{ __html: value }} />
+      </div>
     </div>
   );
 };

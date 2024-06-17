@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
+import Loader from "../loader/SmallLoader";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -38,7 +39,7 @@ const Comments = ({ postSlug }) => {
 
 
   if (error) return <div>Failed to load comments</div>;
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <Loader />
 
   return (
     <div className={style.container}>
