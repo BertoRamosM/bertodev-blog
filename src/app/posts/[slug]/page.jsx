@@ -28,7 +28,7 @@ const SinglePage = async ({params}) => {
         <div className={style.textContainer}>
           <h1 className={style.title}>{data?.title}</h1>
           <div className={style.user}>
-            {data && (
+           {data?.user.image && ( 
               <div className={style.userImageContainer}>
                 <Image
                   src={data?.user.image}
@@ -37,7 +37,7 @@ const SinglePage = async ({params}) => {
                   className={style.avatar}
                 />
               </div>
-            )}
+             )} 
             <div className={style.userTextContainer}>
               <span className={style.username}>{data?.user.name}</span>
               <span className={style.date}>14.06.2024</span>
