@@ -7,10 +7,10 @@ const Card = ({key, item}) => {
   return (
     <div className={style.container} key={key}>
       {item.img && (
-      <div className={style.imageContainer}>
+        <Link className={style.imageContainer} href={`/posts/${item.slug}`}>
           <Image className={style.image} src={item.img} alt="" fill />
-      </div>
-        )}
+        </Link>
+      )}
       <div className={style.textContainer}>
         <div className={style.detail}>
           <span className={style.date}>

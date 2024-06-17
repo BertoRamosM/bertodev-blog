@@ -9,7 +9,7 @@ export const GET = async (req)=> {
   try {
     const comments = await prisma.comment.findMany({
       where: { 
-        ...GET(postSlug && {postSlug})
+        ...(postSlug && {postSlug})
        },
       include:{user: true}
     })

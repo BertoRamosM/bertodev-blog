@@ -23,6 +23,7 @@ const Comments = ({ postSlug }) => {
     `http://localhost:3000/api/comments?postSlug=${postSlug}`,
     fetcher
   );
+  console.log(postSlug)
 
   if (error) return <div>Failed to load comments</div>;
   if (!data) return <div>Loading...</div>;
