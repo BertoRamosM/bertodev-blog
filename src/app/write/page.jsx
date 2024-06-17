@@ -18,6 +18,7 @@ import {
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
 import Image from "next/image";
+import Loader from "../components/loader/Loader";
 
 const storage = getStorage(app);
 
@@ -33,6 +34,8 @@ const WritePage = () => {
   const [media, setMedia] = useState("");
   const [title, setTitle] = useState("");
 
+  const [uploadProgress, setUploadProgress] = useState(0);
+
   useEffect(() => {
     const upload = () => {
       const name = new Date().getTime() + file.name;
@@ -45,6 +48,7 @@ const WritePage = () => {
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setUploadProgress(progress);
           console.log("Upload is " + progress + "% done");
           switch (snapshot.state) {
             case "paused":
@@ -59,6 +63,7 @@ const WritePage = () => {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setMedia(downloadURL);
+            setUploadProgress(100);
           });
         }
       );
@@ -107,7 +112,37 @@ const WritePage = () => {
         onChange={(e) => setTitle(e.target.value)}
       />
       <div className={style.editor}>
-        <button
+        <input
+          type="file"
+          id="image"
+          onChange={(e) => setFile(e.target.files[0])}
+          style={{ display: "none" }}
+        />
+        <button className={style.button}>
+          <label htmlFor="image">
+            <ImageIcon className={style.icon} strokeColor="var(--text)" />
+          </label>
+        </button>
+
+        <Loader />
+
+        {uploadProgress > 0 && uploadProgress < 100 && (
+          <div className={style.loader}>
+            Uploading {uploadProgress.toFixed(0)}%
+          </div>
+        )}
+        {media && uploadProgress === 100 && (
+          <div className={style.imagePreview}>
+            <Image
+              src={media}
+              alt="Uploaded media"
+              className={style.uploadedImg}
+              height={200}
+              width={200}
+            />
+          </div>
+        )}
+        {/*  <button
           className={`${style.button} ${style.openButton}`}
           onClick={() => setOpen(!open)}
         >
@@ -116,8 +151,8 @@ const WritePage = () => {
           ) : (
             <PlusIcon className={style.icon} strokeColor="var(--text)" />
           )}
-        </button>
-        {open && (
+        </button> */}
+        {/*  {open && (
           <div className={style.add}>
             <input
               type="file"
@@ -144,7 +179,7 @@ const WritePage = () => {
             </button>
           </div>
         )}
-
+ */}
         <ReactQuill
           className={style.textArea}
           theme="bubble"
@@ -153,11 +188,7 @@ const WritePage = () => {
           placeholder="Tell your story..."
         />
       </div>
-      {media && (
-        <div className={style.imagePreview}>
-          <Image src={media} alt="Uploaded media" className={style.uploadedImg} fill/>
-        </div>
-      )}
+
       <button className={style.publishButton} onClick={handleSubmit}>
         Publish
       </button>
