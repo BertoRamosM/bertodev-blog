@@ -3,10 +3,11 @@ import style from "./categoryList.module.css";
 import Link from 'next/link';
 import Image from 'next/image';
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 
 const getData = async () => {
-  const res = await fetch("/api/categories", {
+  const res = await fetch(`${apiUrl}/api/categories`, {
     cache: "no-store",
   });
   if (!res.ok) {
@@ -19,7 +20,6 @@ const getData = async () => {
 const CategoryList = async () => {
 
   const data = await getData()
-  console.log(data)
 
 
   return (

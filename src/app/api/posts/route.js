@@ -22,7 +22,7 @@ export const GET = async (req) => {
 
   try {
     const totalPosts = await prisma.post.count({where: query.where});
-      // Calculate the last page
+      // calculate the last page
     const lastPage = Math.ceil(totalPosts / POST_PER_PAGE);
     
     const posts = await prisma.post.findMany(query);

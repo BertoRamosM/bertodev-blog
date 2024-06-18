@@ -1,3 +1,4 @@
+
 import React from "react";
 import style from "./card.module.css";
 import Image from "next/image";
@@ -11,10 +12,15 @@ const DOMPurify = createDOMPurify(window);
 const Card = ({ key, item }) => {
   const sanitizedDesc = DOMPurify.sanitize(item.desc);
 
+
+
   return (
     <div className={style.container} key={key}>
       {item.img && (
-        <Link className={style.imageContainer} href={`/posts/${item.slug}`}>
+        <Link
+          className={style.imageContainer}
+          href={`/posts/${item.slug}`}
+        >
           <Image className={style.image} src={item.img} alt="" fill />
         </Link>
       )}
@@ -32,7 +38,10 @@ const Card = ({ key, item }) => {
           className={style.desc}
           dangerouslySetInnerHTML={{ __html: sanitizedDesc.substring(0, 60) }}
         />
-        <Link href={`/posts/${item.slug}`} className={style.link}>
+        <Link
+          href={`/posts/${item.slug}`}
+          className={style.link}
+        >
           Read More
         </Link>
       </div>

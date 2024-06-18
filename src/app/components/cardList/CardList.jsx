@@ -3,10 +3,18 @@ import style from "./cardListNew.module.css"
 import Pagination from "../pagination/Pagination";
 import Card from "../card/Card";
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+
 const getData = async (page, cat) => {
-  const res = await fetch(`/api/posts?page=${page}&cat=${cat || ""}`, {
-    cache: "no-store",
-  });
+
+
+  const res = await fetch(
+    `${apiUrl}/api/posts?page=${page}&cat=${cat || ""}`,
+    {
+      cache: "no-store",
+    }
+  );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

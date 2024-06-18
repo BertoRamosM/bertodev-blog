@@ -7,6 +7,9 @@ import useSWR from "swr";
 import { useSession } from "next-auth/react";
 import Loader from "../smallLoader/SmallLoader";
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+
 const fetcher = async (url) => {
   const res = await fetch(url);
   if (!res.ok) {
@@ -21,14 +24,14 @@ const fetcher = async (url) => {
 const Comments = ({ postSlug }) => {
   const { status } = useSession();
   const { data, error, mutate } = useSWR(
-    `/api/comments?postSlug=${postSlug}`,
+    `${apiUrl}/api/comments?postSlug=${postSlug}`,
     fetcher
   );
 
   const [desc, setDesc] = useState("");
 
   const handleSubmit = async () => {
-    await fetch("/api/comments", {
+    await fetch(`${apiUrl}/api/comments`, {
       method: "POST",
       body: JSON.stringify({
         desc,
